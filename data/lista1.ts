@@ -1,6 +1,8 @@
-import { List } from "@/app/page";
+import { Sentence } from "@/components/Learning";
 
-export const lista1: List[] = [
+ 
+
+export const lista1: Sentence[] = [
   {
     id: "ich-gehe-mit-vier-kindern-in-den-windkanal",
     de: "Ich gehe mit vier Kindern in den Windkanal.",
