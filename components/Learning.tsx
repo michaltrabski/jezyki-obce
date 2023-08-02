@@ -41,7 +41,7 @@ export default function Learning(props: LearningProps) {
             <button className="btn btn-primary">PLAY</button>
           </div>
           <div>
-            <audio src={audio} controls></audio>
+            <audio src={audio} controls autoPlay></audio>
           </div>
           <h1>{de}</h1>
           <p>{pl}</p>
