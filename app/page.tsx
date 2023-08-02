@@ -3,24 +3,38 @@
 //   description: "opis strony głównej",
 // };
 
-const data = [{
-  text: "Ich gehe mit vier Kindern in den Windkanal.",
-  textMp3Slug: "ich-gehe-mit-vier-kindern-in-den-windkanal",
-  translation: "Jadę do tunelu aerodynamicznego z czwórką dzieci.",
-}]
-export default function Home() {
+import { lista1 } from "@/data/lista1";
 
+export interface List {
+  id: string;
+  de: string;
+  deAudio: string;
+  pl: string;
+  plAudio: string;
+}
+
+const sentences = lista1;
+
+export default function Home() {
   
+
+  const sentence = sentences[0];
+  const { id, de, deAudio, pl, plAudio } = sentence;
+
+  const audio = `/${deAudio}.mp3`;
+
   return (
     <main>
-       
-
       <div className="row pb-3">
         <div className="col text-center">
-          <div><button className="btn btn-primary">PLAY</button></div>
-          <div><audio src={`/${"ich-gehe-mit-vier-kindern-in-den-windkanal"}.mp3`} controls></audio></div>
-          <h1>Ich gehe mit vier Kindern in den Windkanal.</h1>
-          <p>Jadę do tunelu aerodynamicznego z czwórką dzieci.</p>
+          <div>
+            <button className="btn btn-primary">PLAY</button>
+          </div>
+          <div>
+            <audio src={audio} controls></audio>
+          </div>
+          <h1>{de}</h1>
+          <p>{pl}</p>
         </div>
       </div>
 

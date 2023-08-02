@@ -55,10 +55,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div style={{ flexGrow: 0 }} className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   {[
-                    {
-                      label: "Pytania testowe",
-                      href: "#",
-                    },
+                    // {
+                    //   label: "Pytania testowe",
+                    //   href: "#",
+                    // },
                   ].map(({ label, href }, i) => (
                     <li key={i} className="nav-item">
                       <a
