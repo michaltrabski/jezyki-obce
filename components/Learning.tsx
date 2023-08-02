@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export interface Sentence {
@@ -23,11 +24,14 @@ export default function Learning(props: LearningProps) {
   const audio = `/${deAudio}.mp3`;
 
   const handleVote = (vote: "KNOWN" | "UNKNOWN") => {
-    const randomIndex = Math.floor(Math.random() * sentences.length);
+    let randomIndex = 0;
 
-    
+    do {
+      randomIndex = Math.floor(Math.random() * sentences.length);
+    } while (randomIndex === index);
+
     setIndex(() => randomIndex);
-  }
+  };
 
   return (
     <main>
@@ -47,10 +51,10 @@ export default function Learning(props: LearningProps) {
       <div className="row pb-3">
         <div className="col">
           <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" className="btn btn-danger" onClick={() =>handleVote("UNKNOWN")}>
+            <button type="button" className="btn btn-danger" onClick={() => handleVote("UNKNOWN")}>
               nie znam
             </button>
-            <button type="button" className="btn btn-success" onClick={() =>handleVote("KNOWN")}>
+            <button type="button" className="btn btn-success" onClick={() => handleVote("KNOWN")}>
               znam
             </button>
           </div>
