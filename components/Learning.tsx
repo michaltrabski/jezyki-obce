@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Sentence from "./Sentence";
 
 export interface Sentence {
   id: string;
@@ -16,7 +17,7 @@ interface LearningProps {
 export default function Learning(props: LearningProps) {
   const { sentences } = props;
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(() => Math.floor(Math.random() * sentences.length));
 
   const sentence = sentences[index];
   const { id, de, deAudio, pl, plAudio } = sentence;
@@ -35,18 +36,7 @@ export default function Learning(props: LearningProps) {
 
   return (
     <main>
-      <div className="row pb-3">
-        <div className="col text-center">
-          <div>
-            <button className="btn btn-primary">PLAY</button>
-          </div>
-          <div>
-            <audio src={audio} controls autoPlay></audio>
-          </div>
-          <h1>{de}</h1>
-          <p>{pl}</p>
-        </div>
-      </div>
+      <Sentence sentence={sentence} tag="h1" autoPlay loop/>
 
       <div className="row pb-3">
         <div className="col">
@@ -57,6 +47,20 @@ export default function Learning(props: LearningProps) {
             <button type="button" className="btn btn-success" onClick={() => handleVote("KNOWN")}>
               znam
             </button>
+          </div>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div className="row pb-3">
+        <div className="col">
+          <div className="text-start">
+            <h2>Cała lista zdań do nauki: ({sentences.length})</h2>
+
+            {sentences.map((sentence) => (
+              <Sentence key={sentence.id} sentence={sentence} tag="h3"/>
+            ))}
           </div>
         </div>
       </div>
