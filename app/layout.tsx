@@ -15,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
           crossOrigin="anonymous"
         />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
         <script
           defer
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   !
                 </a>
               </div> */}
-         
+
               <button
                 className="navbar-toggler"
                 type="button"
@@ -92,7 +93,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </main>
 
-        <footer style={{opacity:0.1}} className="d-none p5 bg-dark text-center border ">to jest footer</footer>
+        <footer style={{ opacity: 0.1 }} className="d-none p5 bg-dark text-center border ">
+          to jest footer
+        </footer>
       </body>
       {/* </Providers> */}
     </html>

@@ -1,5 +1,3 @@
-import { PauseIcon } from "@/icons/PauseIcon";
-import { PlayIcon } from "@/icons/PlayIcon";
 import { useEffect, useRef, useState } from "react";
 
 export interface Sentence {
@@ -20,6 +18,9 @@ interface SentenceProps {
 export default function Sentence(props: SentenceProps) {
   const { sentence, tag: Tag, autoPlay = false, loop = false } = props;
   const { id, de, deAudio, pl, plAudio } = sentence;
+
+  const [isReactReady, setIsReactReady] = useState(false);
+  useEffect(() => setIsReactReady(true), []);
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -49,22 +50,22 @@ export default function Sentence(props: SentenceProps) {
     <div className="row pb-3">
       <div className="col">
         <div className="position-relative">
-          {/* isPlaying={isPlaying ? "true" : "false"} */}
-          <Tag>{de}</Tag>
-          {!isPlaying && (
-            <div className="position-absolute" style={{ bottom: 0, left: "100%" }}>
-              <button className="btn btn-primary" style={{ transform: "translate(-100%,0%)" }} onClick={play}>
-                <PlayIcon />
-              </button>
-            </div>
+          {!isReactReady && (
+            <Tag>
+              {de}
+              <i className="ms-3 bi bi-play-circle"></i>
+            </Tag>
           )}
-          {isPlaying && (
-            <div className="position-absolute" style={{ bottom: 0, left: "100%" }}>
-              <button className="btn btn-primary" style={{ transform: "translate(-100%,0%)" }} onClick={pause}>
-                <PauseIcon />
-              </button>
-            </div>
+
+          {isReactReady && (
+            <button className="btn" onClick={isPlaying? pause :play}> 
+              <Tag>
+                {de}
+                <i className={`ms-3 bi bi-${isPlaying? "pause": "play"}-circle`}></i>
+              </Tag>
+            </button>
           )}
+  
         </div>
 
         <div>
