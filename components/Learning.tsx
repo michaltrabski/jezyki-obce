@@ -36,7 +36,7 @@ export default function Learning(props: LearningProps) {
 
   return (
     <main>
-      <Sentence sentence={sentence} tag="h1" autoPlay loop/>
+      <Sentence sentence={sentence} tag="h1" autoPlay={true} loop={false}/>
 
       <div className="row pb-3">
         <div className="col">
