@@ -11,12 +11,13 @@ export interface Sentence {
 interface SentenceProps {
   sentence: Sentence;
   tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  align?: "start" | "center" | "end";
   autoPlay?: boolean;
   loop?: boolean;
 }
 
 export default function Sentence(props: SentenceProps) {
-  const { sentence, tag: Tag, autoPlay = false, loop = false } = props;
+  const { sentence, tag: Tag, autoPlay = false, loop = false, align = "start" } = props;
   const { id, de, deAudio, pl, plAudio } = sentence;
 
   const [isReactReady, setIsReactReady] = useState(false);
@@ -48,29 +49,25 @@ export default function Sentence(props: SentenceProps) {
 
   return (
     <div className="row pb-3">
-      <div className="col">
-        <div className="position-relative">
-          {!isReactReady && (
+      <div className={`col text-${align}`}>
+        {!isReactReady && (
+          <Tag>
+            {de}
+            <i className="ms-3 bi bi-play-circle"></i>
+          </Tag>
+        )}
+
+        {isReactReady && (
+          <button className={`btn mt-0 mb-1 p-0 text-${align}`} onClick={isPlaying ? pause : play}>
             <Tag>
               {de}
-              <i className="ms-3 bi bi-play-circle"></i>
+              <i className={`ms-3 bi bi-${isPlaying ? "pause" : "play"}-circle`}></i>
             </Tag>
-          )}
+          </button>
+        )}
 
-          {isReactReady && (
-            <button className="btn" onClick={isPlaying? pause :play}> 
-              <Tag>
-                {de}
-                <i className={`ms-3 bi bi-${isPlaying? "pause": "play"}-circle`}></i>
-              </Tag>
-            </button>
-          )}
-  
-        </div>
+        <audio className="d-none" ref={audioRef} src={audio} controls autoPlay={autoPlay} loop={loop}></audio>
 
-        <div>
-          <audio ref={audioRef} src={audio} controls autoPlay={autoPlay} loop={loop}></audio>
-        </div>
         <p>{pl}</p>
       </div>
     </div>

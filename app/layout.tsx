@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
           crossOrigin="anonymous"
         />
+        
       </head>
       {/* <Providers> */}
       <body data-bs-theme="dark">
@@ -88,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>
           <div className="container-fluid">
             <div className="row">
-              <div className="col text-center">{children}</div>
+              <div className="col">{children}</div>
             </div>
           </div>
         </main>

@@ -36,10 +36,10 @@ export default function Learning(props: LearningProps) {
 
   return (
     <main>
-      <Sentence sentence={sentence} tag="h1" autoPlay={true} loop={false}/>
+      <Sentence sentence={sentence} tag="h1" align="center" autoPlay={true} loop={false} />
 
       <div className="row pb-3">
-        <div className="col">
+        <div className="col text-center">
           <div className="btn-group" role="group" aria-label="Basic mixed styles example">
             <button type="button" className="btn btn-danger" onClick={() => handleVote("UNKNOWN")}>
               nie znam
@@ -51,17 +51,15 @@ export default function Learning(props: LearningProps) {
         </div>
       </div>
 
-      <hr/>
+      <hr />
 
       <div className="row pb-3">
         <div className="col">
-          <div className="text-start">
-            <h2>Cała lista zdań do nauki: ({sentences.length})</h2>
+          <h2>Cała lista zdań do nauki: ({sentences.length})</h2>
 
-            {sentences.map((sentence) => (
-              <Sentence key={sentence.id} sentence={sentence} tag="h3"/>
-            ))}
-          </div>
+          {sentences.map((sentence) => (
+            <Sentence key={sentence.id} sentence={sentence} tag="h3" />
+          ))}
         </div>
       </div>
     </main>
